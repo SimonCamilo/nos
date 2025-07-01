@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:silver;
+}
+
+.container{
+    width: 352px;
+    height: 198px;
+    outline: 1px solid black;
+    margin: auto;
+
+    transform: scale(3) translateY(40%);
+}
+
+.game-canvas{
+    border: 1px solid black;
+}
+
+.container canvas{
+    image-rendering: pixelated;
+}
