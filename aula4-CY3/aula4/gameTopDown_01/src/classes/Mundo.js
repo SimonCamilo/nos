@@ -104,6 +104,10 @@ const gameObjects = [
         movimentoRestante:0,
         estaMovimentando:false,
         velocidade: 1,
+
+        comportamento: [
+            {tipo:"andar", passos: 1},
+        ]
     }
 ];
 
@@ -258,6 +262,9 @@ function criarMapaColisao(linhas, colunas){
     for (let i = 10; i < 23; i++){
         mapa[10][i] = 1;
     }
+    for (let i = 0; i < 1; i++){
+        mapa[8][i] = 1
+    }
     for (let i = 2; i < 9; i++){
         mapa[8][i] = 1;
     }
@@ -269,6 +276,9 @@ function criarMapaColisao(linhas, colunas){
     }
     for (let i = 22; i < 25; i++){
         mapa[6][i] = 1;
+    }
+    for (let i = 24; i < 25; i++){
+        mapa[8][i] = 1;
     }
     for (let i = 26; i < 30; i++){
         mapa[8][i] = 1;
@@ -313,13 +323,13 @@ async function executarComportamento(npc){
 async function executarComportamentos(npc) {
     if(npc.nome === "Npc3"){
         while(true){
-            if (npc.movimentoRestante === 0){
+            if (npc.movimentoRestante === 0) {
                 const dx = jogador.x - npc.x;
                 const dy = jogador.y - npc.y;
 
                 let direcaoPerseguidor;
 
-                if (Math.abs(dx) > Math.abs(dy)){
+                if (Math.abs(dx) > Math.abs(dy)) {
                     direcaoPerseguidor = dx > 0 ? "right" : "left";
                 }else{
                     direcaoPerseguidor = dy > 0 ? "down" : "up";
@@ -329,6 +339,7 @@ async function executarComportamentos(npc) {
             }
             await esperar(10);
         }
+    }else{
     }
 };
 function moverNpc(npc, direcao){
@@ -373,7 +384,6 @@ function gameLoop(){
     desenharGameObject();
     atualizarAnimacaoGameobj()
     atualizarPosicaodoNPC();
-    executarComportamentos();
 
     atualizarCamera();
     requestAnimationFrame(gameLoop);
