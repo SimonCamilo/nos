@@ -17,7 +17,7 @@ const pessoa2 = {
 };
 
 pessoa.jogar();
-pessoa2.correr();*/
+pessoa2.correr();
 
 let numeros = [10,20,30,40,50];
 let frutas =["melancia", "maça" , "uva"];
@@ -40,4 +40,4 @@ let resultadoFilter = numeros.filter((n) => {
 console.log(resultadoFilter)
 
 let mapa = Array.from({length: 3}, () => Array(2).fill("x"));
-console.log(mapa);
+console.log(mapa)*/

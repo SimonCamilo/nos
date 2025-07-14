@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Aventura Mágica</title>
+  <style>
+    .espelho {
+      width: 100px;
+      height: 100px;
+      background-color: silver;
+      border: 2px solid black;
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Aventura Mágica</h1>
+
+
+  <h2>O Portal Rúnico</h2>
+  <button onclick="traduzirRunas()">Traduzir as runas</button>
+  <button onclick="tocarRunas()">Tocar nas runas</button>
+  <button onclick="ignorarRunas()">Ignorar e seguir</button>
+  <p id="respostaPortal"></p>
+
+  <h2>O Enigma do Guardião</h2>
+  <button onclick="responderEnigma()">Responder ao enigma</button>
+
+  
+  <h2>A Sala dos Espelhos</h2>
+  <div id="espelhos"></div>
+
+  <h2>O Coração de Eldorath</h2>
+  <button onclick="finalDaJornada()">Decidir destino</button>
+  <p id="final"></p>
+
+  <script>
+    const traduzirRunas = () => {
+  document.getElementById("respostaPortal").innerHTML = "As runas revelam um aviso antigo sobre um guardião adormecido.";
+};
+
+const tocarRunas = () => {
+  document.getElementById("respostaPortal").innerHTML = "Ao tocar nas runas, uma energia estranha percorre seu corpo.";
+};
+
+const ignorarRunas = () => {
+  document.getElementById("respostaPortal").innerHTML = "Você decide não se envolver e segue adiante no corredor escuro.";
+};
+
+function responderEnigma() {
+  const resposta = prompt("O que é mais forte: coragem, sabedoria ou força?").toLowerCase();
+
+  if (resposta === "coragem") {
+    console.log("O guardião respeita sua bravura e abre passagem.");
+  } else if (resposta === "sabedoria") {
+    console.log("O guardião acena em aprovação à sua mente aguçada.");
+  } else if (resposta === "força") {
+    console.log("O guardião ruge em reconhecimento à sua potência.");
+  } else {
+    console.log("O guardião não compreende sua resposta. A porta continua fechada.");
+  }
+}
+
+const resultados = ["Tesouro", "Monstro", "Reflexo"];
+const espelhosDiv = document.getElementById("espelhos");
+
+for (let i = 0; i < 5; i++) {
+  const espelho = document.createElement("div");
+  espelho.className = "espelho";
+  espelho.addEventListener("click", () => {
+    const resultado = resultados[Math.floor(Math.random() * resultados.length)];
+    espelho.innerHTML = resultado;
+  });
+  espelhosDiv.appendChild(espelho);
+}
+
+function finalDaJornada() {
+  let coragem = true;
+  let sabedoria = false;
+  let forca = true;
+
+  let destino = "";
+
+  if (coragem && sabedoria && forca) {
+    destino = "Você se torna o novo guardião de Eldorath!";
+  } else if (coragem && forca) {
+    destino = "Você derrota o inimigo, mas a sabedoria perdida cobra seu preço.";
+  } else if (sabedoria) {
+    destino = "Você encontra uma saída segura, mas a aventura permanece inacabada.";
+  } else {
+    destino = "Sem preparo, você desaparece nas lendas como mais um aventureiro perdido.";
+  }
+
+  document.getElementById("final").innerHTML = destino;
+}
+  </script>
+</body>
+</html>
