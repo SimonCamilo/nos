@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .nav{
+        background-color:white;
+        color:black;
+        padding: 1rem 2rem;
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        border: gainsboro solid 1px;
+    }
+    input {
+        width: 25%;
+        padding: 0.5rem;
+        font-size: 1.2rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: 1rem;
+    }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <h1>HealthTrack</h1>
+    </header>
+    <main>
+        <input type="text" placeholder="digite sua altura" id="altura">
+        <input type="text" placeholder="digite seu peso" id="peso">
+        <button id="confir">    confirme seu IMC    </button>
+    </main>
+    <script>
+        const button = document.getElementById("confir");
+        button.addEventListener("click", () => {
+            const daltura = document.getElementById("altura");
+            const dpeso = document.getElementById("peso");
+
+            let peso = +dpeso;
+            let altura = +daltura;
+
+            const imc = peso / (altura * altura);
+            let classificacao = "" ;
+            if (imc < 18.5) {
+                classificacao = "Abaixo do peso";
+            } else if (imc >= 18.5 && imc < 24.9) {
+                classificacao = "Peso normal";
+            } else if (imc >= 25 && imc < 29.9) {
+                classificacao = "Sobrepeso";
+            } else {
+                classificacao = "Obesidade";
+            }   
+            alert(`Seu IMC é ${imc.toFixed(2)} e você está classificado como: ${classificacao}`);
+        });
+    </script>
+</body>
+</html>
