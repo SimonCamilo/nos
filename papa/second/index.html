@@ -6,9 +6,9 @@
     <title>Document</title>
     <style>
     * {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
     }
     .nav{
         background-color:white;
@@ -19,13 +19,48 @@
         display: flex;
         border: gainsboro solid 1px;
     }
-    input {
-        width: 25%;
-        padding: 0.5rem;
-        font-size: 1.2rem;
+     main{
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+        max-width: 900px;
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+    }
+    .formulario {
+      flex: 1;
+      margin-right: 40px;
+    }
+
+    .formulario h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    input{
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
         border: 1px solid #ccc;
-        border-radius: 4px;
-        margin-top: 1rem;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    button {
+      background-color: navy;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+    }
+    .resultado {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      font-size: 18px;
     }
     </style>
 </head>
@@ -34,32 +69,34 @@
         <h1>HealthTrack</h1>
     </header>
     <main>
-        <input type="text" placeholder="digite sua altura" id="altura">
-        <input type="text" placeholder="digite seu peso" id="peso">
-        <button id="confir">    confirme seu IMC    </button>
+         <div class="formulario">
+            <h2>Calculadora de IMC</h2>
+            <input type="number" id="altura" placeholder="altura (metros)">
+            <input type="number" id="peso" placeholder="Peso (kg)">
+            <button onclick="calcularIMC()">Calcular IMC</button>
+        </div>
+        <div class="resultado">
+            <p id="imc"></p>
+            <h3 id="rango"></h3>
+        </div>
     </main>
     <script>
-        const button = document.getElementById("confir");
-        button.addEventListener("click", () => {
-            const daltura = document.getElementById("altura");
-            const dpeso = document.getElementById("peso");
-
-            let peso = +dpeso;
-            let altura = +daltura;
+        function calcularIMC() {
+            const altura = parseFloat(document.getElementById("altura").value);
+            const peso = parseFloat(document.getElementById("peso").value);
 
             const imc = peso / (altura * altura);
-            let classificacao = "" ;
-            if (imc < 18.5) {
-                classificacao = "Abaixo do peso";
-            } else if (imc >= 18.5 && imc < 24.9) {
-                classificacao = "Peso normal";
-            } else if (imc >= 25 && imc < 29.9) {
-                classificacao = "Sobrepeso";
-            } else {
-                classificacao = "Obesidade";
-            }   
-            alert(`Seu IMC é ${imc.toFixed(2)} e você está classificado como: ${classificacao}`);
-        });
+            const imcTexto = imc.toFixed(1);
+
+            let rango = '';
+            if (imc < 18.5) rango = 'Bajo peso(simon)';
+            else if (imc < 25) rango = 'Rango de peso saludable';
+            else if (imc < 30) rango = 'Sobrepeso';
+            else rango = 'Obesidad(papa)';
+
+            document.getElementById('imc').textContent = `Tu IMC: ${imcTexto}`;
+            document.getElementById('rango').textContent = rango;
+        }
     </script>
 </body>
 </html>
