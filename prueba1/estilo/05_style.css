@@ -1,0 +1,17 @@
+        @view-transition {
+            navigation: auto;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+        img {
+            width: 50%;
+            border-radius: 8px;
+            height: auto;
+            display: block;
+            cursor: pointer;
+        }

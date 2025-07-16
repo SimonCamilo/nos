@@ -1,0 +1,25 @@
+        @view-transition {
+            navigation: auto;
+        }
+        img {
+            width: 70%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border-radius: 8px;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            
+        }
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: black;
+            color: white;
+        ;
+        }
+        .legend {
+            color: yellow;
+        }
